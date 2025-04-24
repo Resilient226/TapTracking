@@ -3,7 +3,7 @@
   "routes": [
     {
       "src": "/track",
-      "dest": "/api/track.js"
+      "dest": "/api/track"
     }
   ]
 }
