@@ -1,9 +1,15 @@
 {
   "version": 2,
+  "builds": [
+    {
+      "src": "api/log.js",
+      "use": "@vercel/node"
+    }
+  ],
   "routes": [
     {
-      "src": "/track",
-      "dest": "/api/track"
+      "src": "/api/log",
+      "dest": "/api/log.js"
     }
   ]
 }

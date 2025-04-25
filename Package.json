@@ -1,15 +1,16 @@
 {
-  "name": "tap-tracking",
+  "name": "tap-logging-system",
   "version": "1.0.0",
-  "private": true,
+  "description": "System for tracking NFC card taps and logging to Google Sheets",
+  "main": "api/log.js",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start"
+    "dev": "vercel dev",
+    "deploy": "vercel --prod"
   },
   "dependencies": {
-    "next": "^14.0.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "googleapis": "^118.0.0"
+  },
+  "devDependencies": {
+    "vercel": "^29.1.1"
   }
 }
