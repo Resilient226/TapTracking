@@ -1,13 +1,13 @@
 const { logTapToSheet } = require('../lib/sheets');
 
 /**
- * Serverless function handler for logging taps
+ * Serverless function handler for logging taps with new aggregated system
  *
  * @param {import('http').IncomingMessage} req - HTTP request object
  * @param {import('http').ServerResponse} res - HTTP response object
  */
 module.exports = async (req, res) => {
-  // Set CORS headers to allow requests from any origin
+  // Set CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
 
@@ -33,30 +33,29 @@ module.exports = async (req, res) => {
     const location = queryParams.get('location') || 'unknown';
 
     console.log(
-      `Logging tap: Employee=${employee}, Business=${business}, Location=${location}`
+      `Processing tap: Employee=${employee}, Business=${business}, Location=${location}`
     );
 
-    // Log the tap data to Google Sheets
+    // Log the tap data and update all sheets
     const logResult = await logTapToSheet({
       employee,
       business,
       location,
     });
 
-    if (!logResult.success) {
-      console.error('Failed to log tap:', logResult.error);
+    if (logResult.success) {
+      console.log('Successfully logged tap and updated summary');
     } else {
-      console.log('Successfully logged tap to Google Sheets');
+      console.error('Failed to log tap:', logResult.error);
     }
 
-    // Always redirect to the destination URL, even if logging fails
-    // This ensures a seamless user experience
+    // Always redirect to maintain user experience
     res.writeHead(302, { Location: 'https://lcsteak.info' });
     res.end();
   } catch (error) {
     console.error('Error processing tap:', error);
 
-    // Still redirect on error to maintain user experience
+    // Still redirect on error
     res.writeHead(302, { Location: 'https://lcsteak.info' });
     res.end();
   }
