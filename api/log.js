@@ -50,13 +50,13 @@ module.exports = async (req, res) => {
     }
 
     // Always redirect to maintain user experience
-    res.writeHead(302, { Location: 'https://lcsteak.info' });
+    res.writeHead(302, { Location: 'https://lowcountry.bio' });
     res.end();
   } catch (error) {
     console.error('Error processing tap:', error);
 
     // Still redirect on error
-    res.writeHead(302, { Location: 'https://lcsteak.info' });
+    res.writeHead(302, { Location: 'https://lowcountry.bio' });
     res.end();
   }
 };
