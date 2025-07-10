@@ -11,9 +11,5 @@
       "src": "/api/log",
       "dest": "/api/log.js"
     }
-  ],
-  "env": {
-    "GOOGLE_SHEETS_API_KEY": "your-production-key-here",
-    "OTHER_SECRET": "your-other-env-var"
-  }
+  ]
 }
