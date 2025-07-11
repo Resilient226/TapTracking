@@ -10,6 +10,13 @@
     {
       "src": "/api/log",
       "dest": "/api/log.js"
+    },
+    {
+      "src": "/",
+      "status": 308,
+      "headers": {
+        "Location": "https://lowcountry.bio"
+      }
     }
   ]
 }
